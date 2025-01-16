@@ -3,6 +3,12 @@
 import numpy as np
 from scipy.signal import convolve2d
 
+"""
+    The Board class
+    The class that represents the board of the game
+    The 0s represent empty cells, 1s or 2s represent the player's or computer's discs
+"""
+
 class Board:
 
     """
