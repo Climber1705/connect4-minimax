@@ -18,7 +18,7 @@ class Game:
 
     WIDTH : int = 7
     HEIGTH : int = 6
-    #Max depth of the search of 6 or take some time to compute
+    #Max depth of the search of 6 or take some time to compute for higher values
     SEARCH_DEPTH : int = 6
 
     board: Board
@@ -37,8 +37,12 @@ class Game:
         self.board = Board(np.zeros((self.HEIGTH, self.WIDTH), dtype=np.uint8), self.playersDisc, self.computerDisc)
         self.miniMax = MiniMax(self.playersDisc, self.computerDisc)
 
+    """
+        Gets the starting disc to determine who starts
+        @return: the starting disc
+    """
 
-    def getStartingDisc(self):
+    def getStartingDisc(self) -> int:
         if randint(0, 1) == 0:
             return self.playersDisc
         return self.computerDisc
@@ -118,7 +122,3 @@ class Game:
             else:
                 disc = self.changeDisc(disc)
         print("Thank you for playing!")
-
-game = Game()
-game.run()
-    
