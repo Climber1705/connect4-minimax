@@ -26,6 +26,10 @@ To run the code enter
    python src/main.py
 ```
 
+## Improvements
+1. Want to add a heuritic to improve how many the alpha-beta pruning algorithm prunes the search tree
+2. Want to speed up the code so I can set the depth to a higher value.
+
 ## Help and Resources
 
 While developing this project, I used some online resources to fix issues which occurred. The main problem was about the efficient of identifying the presence of a 4 in a row on the board in all directions. I found this website, [Stack Overflow](https://stackoverflow.com/questions/29949169/how-to-implement-the-function-that-checks-for-horizontal-vertical-and-diagonal), useful for identifying a solution.  
