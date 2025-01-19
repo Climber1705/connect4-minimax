@@ -28,7 +28,7 @@ To run the code enter
 
 ## Improvements
 1. Add a heuritic to improve how many the alpha-beta pruning algorithm prunes the search tree
-2. Speed up the code so I can set the depth to a higher value.
+2. Speed up the code to set the depth to a higher value (6-8)
 
 ## Help and Resources
 
