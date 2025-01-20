@@ -5,7 +5,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
-from game import Game # type: ignore
+from game import Game 
 
 class TestGame(unittest.TestCase):
 
@@ -30,6 +30,19 @@ class TestGame(unittest.TestCase):
             self.game.board.dropDisc(7,1)
         with self.assertRaises(ValueError):
             self.game.board.dropDisc(-1,1)
+
+    def testRemoveMove(self):
+        with self.assertRaises(ValueError):
+            self.game.board.undoDisc(0)
+        with self.assertRaises(ValueError):
+            self.game.board.undoDisc(-1)
+        with self.assertRaises(ValueError):
+            self.game.board.undoDisc(7)
+        self.game.board.dropDisc(0,1)
+        self.game.board.undoDisc(0)
+        self.assertAlmostEqual(self.game.board.board[5][0], 0)
+
+        
     
     def testColumnFull(self):
         for i in range(6):
