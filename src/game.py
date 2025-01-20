@@ -18,8 +18,8 @@ class Game:
 
     WIDTH : int = 7
     HEIGTH : int = 6
-    #Max depth of the search of 6 or take some time to compute for higher values
-    SEARCH_DEPTH : int = 6
+    # Max depth of the search of 7 or take some time to compute for higher values
+    SEARCH_DEPTH : int = 7
 
     board: Board
     playersDisc: int
