@@ -1,6 +1,5 @@
 
 from board import Board
-from copy import deepcopy
 
 """
     The MiniMax class
@@ -29,7 +28,7 @@ class MiniMax:
     def __init__(self, playerDisc, computerDisc):
         self.playerDisc = playerDisc
         self.computerDisc = computerDisc
-
+        
     """
         The MiniMax algorithm with alpha-beta pruning
         to find the best move for the computer
@@ -43,18 +42,25 @@ class MiniMax:
     """
 
     def miniMax(self, board: Board, alpha: float, beta: float, depth: int, token: int) -> tuple[int, int]:
-        if depth == 0 or board.isGameOver():
+        # Only need to check if there's a winner of one of the discs as
+        # the player who played the last move is the only one who can win
+        lastDisc = self.playerDisc if token == self.computerDisc else self.computerDisc
+        if depth == 0 or board.isBoardFull() or board.isWinner(lastDisc):
             return None, board.evaluate()
         else:
+            # Sort valid moves by a heuristic
+            # Heuristic: the closer to the middle the better
             moves = board.getValidMoves()
+            # Moves closers to the middle are "better" so there are evaluated first
+            sortedMoves = sorted(moves, key=lambda x: abs(x - board.WIDTH//2))
+            bestMove = sortedMoves[0]
             if token == self.computerDisc:
-                #Maximize
+                # Maximize
                 score = -float('inf')
-                bestMove = moves[0]
-                for move in moves:
-                    newBoard = deepcopy(board)
-                    newBoard.dropDisc(move, token)
-                    newScore = max(score, self.miniMax(newBoard, alpha, beta, depth-1, self.playerDisc)[1])
+                for move in sortedMoves:
+                    board.dropDisc(move, token) 
+                    newScore = max(score, self.miniMax(board, alpha, beta, depth-1, self.playerDisc)[1])
+                    board.undoDisc(move)
                     if newScore > score:
                         score = newScore
                         bestMove = move
@@ -63,13 +69,12 @@ class MiniMax:
                         break
                 return bestMove, score
             else:
-                #Minimize
+                # Minimize
                 score = float('inf')
-                bestMove = moves[0]
-                for move in moves:
-                    newBoard = deepcopy(board)
-                    newBoard.dropDisc(move, token)
-                    newScore = min(score, self.miniMax(newBoard, alpha, beta, depth-1, self.computerDisc)[1])
+                for move in sortedMoves:
+                    board.dropDisc(move, token)
+                    newScore = min(score, self.miniMax(board, alpha, beta, depth-1, self.computerDisc)[1])
+                    board.undoDisc(move)
                     if newScore < score:
                         score = newScore
                         bestMove = move
