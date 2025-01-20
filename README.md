@@ -27,10 +27,8 @@ To run the code enter
 ```
 
 ## Improvements
-1. Add a heuritic to improve how many the alpha-beta pruning algorithm prunes the search tree
+1. Add a transposition table so we don't have to constantly calculate values
 2. Speed up the code to set the depth to a higher value (6-8)
-<br />i.  Add a transposition table to store states that have been seen
-<br />ii. Change the code so we don't deepcopy an object
 
 ## Help and Resources
 
