@@ -4,18 +4,14 @@ import numpy as np
 from scipy.signal import convolve2d
 
 """
-    The Board class
-    The class that represents the board of the game
+    The BoardActions class
+    The class that represents action that the board does
     The 0s represent empty cells, 1s or 2s represent the player's or computer's discs
 """
 
 class Board:
 
-    """
-        Attributes of the Board class
-    """
-
-    #Kernels for the convolutions
+    # Kernels for the convolutions
     h_kernels : list[np.array] = [np.array([[1, 1]]), np.array([[1,1,1]]), np.array([[1,1,1,1]])]
     v_kernels : list[np.array] = [np.array([[1], [1]]), np.array([[1], [1], [1]]), np.array([[1], [1], [1], [1]])]
     dp_kernels : list[np.array] = [np.eye(2), np.eye(3), np.eye(4)]
@@ -23,26 +19,22 @@ class Board:
     
     winning_kernels : list[np.array] = [np.array([[1,1,1,1]]), np.array([[1], [1], [1], [1]]), np.eye(4), np.eye(4)[::-1]]
 
-    #Weights for the score
+    # Weights for the score
     weights : list[int] = [10, 100, 1000]
 
-    #Board, player's disc and computer's disc
-    board: np.array
+    # Dimensions of board
+    WIDTH : int = 7
+    HEIGHT : int = 6
+
+    # Player's disc and computer's disc
     playerDisc: int
     computerDisc: int
-
-    """
-        Constructor of the Board class
-        @param board: the board
-        @param playerDisc: the player's disc
-        @param computerDisc: the computer's disc
-    """
-
-    def __init__(self, board, playerDisc, computerDisc):
+    
+    def __init__(self, board: np.array, playerDisc: int, computerDisc: int):
         self.board = board
         self.playerDisc = playerDisc
         self.computerDisc = computerDisc
-    
+
     """
         Displays the board
     """
@@ -67,35 +59,39 @@ class Board:
     """
 
     def dropDisc(self, column: int, disc: int):
-        if column < 0 or column > 6:
+        if column < 0 or column >= self.WIDTH:
             raise ValueError("Move out of bounds")
         elif not self.isValidMove(column):
             raise ValueError("Column is full")
         else:
-            for i in range(5, -1, -1):
-                if self.board[i][column] == 0:
-                    self.board[i][column] = disc
-                    break
+            self.board[np.argmax(self.board.T[column] >= 1) - 1][column] = disc
+
+    """
+        Undos the move in the column
+        @param column: the column to remove the disc
+        @raises ValueError: if there's no disc to remove or out of bounds
+    """
+
+    def undoDisc(self, column: int) -> np.array:
+        if column < 0 or column >= self.WIDTH:
+            raise ValueError("Move out of bounds")
+        elif np.all(self.board.T[column] == 0):
+            raise ValueError("No disc to remove in column")
+        else:
+            self.board[np.argmax(self.board.T[column] >= 1)][column] = 0
 
     """
         Gets the valid moves
+        @param: the current board
         @return: the valid moves
     """
 
     def getValidMoves(self) -> list[int]:
-        return [i for i in range(7) if self.isValidMove(i)]
-
-    """
-        Checks if the game is over
-        i.e the board is full or there is a winner
-        @return: True if the game is over, False otherwise
-    """
-
-    def isGameOver(self) -> bool:
-        return self.isBoardFull() or self.isWinner(self.playerDisc) or self.isWinner(self.computerDisc)
+        return [i for i in range(self.WIDTH) if self.isValidMove(i)]
 
     """
         Checks if the board is full
+        @param: the current board
         @return: True if the board is full, False otherwise
     """
 
@@ -117,8 +113,7 @@ class Board:
 
     """
         Evaluates the board
-        @param playerDisc: the player's disc
-        @param computerDisc: the computer's disc
+        @param board: the board being evaluated
         @return: the score of the board
     """
 
@@ -140,16 +135,16 @@ class Board:
 
     def getScore(self, discBoard : np.array) -> int:
         score = 0
-        #Horizontal
+        # Horizontal 4 in a row
         for id, kernel in enumerate(self.h_kernels):
             score += np.sum(convolve2d(discBoard, kernel, mode='valid') == id+2) * self.weights[id]
-        #Vertical
+        # Vertical 4 in a row
         for id, kernel in enumerate(self.v_kernels):
             score += np.sum(convolve2d(discBoard, kernel, mode='valid') == id+2) * self.weights[id]
-        #Diagonal positive
+        # Diagonal positive 4 in a row
         for id, kernel in enumerate(self.dp_kernels):
             score += np.sum(convolve2d(discBoard, kernel, mode='valid') == id+2) * self.weights[id]
-        #Diagonal negative
+        # Diagonal negative 4 in a row
         for id, kernel in enumerate(self.dn_kernels):
             score += np.sum(convolve2d(discBoard, kernel, mode='valid') == id+2) * self.weights[id]
         return score
