@@ -1,12 +1,12 @@
 # Connect4 with Minimax
 ## Abstract
-The topics Minimax and Alpha-Beta pruning in the module "Intro to AI" at King's College London (KCL) influenced me to build this Connect4 project.
+The topics Minimax and Alpha-Beta pruning in the module "Introduction to Artificial Intelligence" at King's College London (KCL) influenced me to build this Connect4 project.
 
 Minimax is an adversarial search algorithm used in games/situations with two players (e.g. Connect4). One player aims to maximize their score, while the other tries to minimize it. The algorithm explores all possible moves (to a certain depth) through a search tree to find the optimal move, assuming both players play optimally. More information about [Minimax](https://en.wikipedia.org/wiki/Minimax)
 
-Alpha-Beta pruning is a way of optimizing the minimax so that it skips unnecessary branches in the search tree. It stops evaluating a move if it finds that another move that leads to a better outcome. This makes the minimax faster while producing the same result. More at about [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
+Alpha-Beta pruning is a way of optimizing the minimax so that it skips unnecessary branches in the search tree. It stops evaluating a move if it finds that another move that leads to a better outcome. This makes the minimax faster while producing the same result. More about [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 
-A kernel was used to identify a 4 in a row. This works via a [Convolution](https://en.wikipedia.org/wiki/Kernel_(image_processing)) with the board. If there's a 4 present in the product of doing the convolution of the kernel and the board this indicates a 4 in a row.
+A kernel was used to identify a 4 in a row. This works via a [Convolution](https://en.wikipedia.org/wiki/Kernel_(image_processing)) with the board. If there's a 4 present in the product of doing the convolution of the kernel and the board, this indicates a 4 in a row.
 
 ## Set up
 1. Install pip if you don't already have it
