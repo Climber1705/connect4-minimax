@@ -24,7 +24,7 @@ For more information about convolution, check out the [Wikipedia article](https:
 ## Requirements
 Before running the project, install **Python 3.x** and **pip**.
 ### Dependencies:
-To install the required dependencies, you can use the `requirements.txt` file.
+You can use the `requirements.txt` file to install the required dependencies.
 ```bash
 pip install -r requirements.txt
 ```
@@ -60,7 +60,12 @@ connect4-minimax/
 │   ├── minimax.py        # Contains the Minimax algorithm and Alpha-Beta pruning implementation
 │   ├── game.py           # Handles the game board logic and move validation
 │   └── board.py          # Contains logic for the Connect4 board, including checking for "four in a row."
-│
+│── tests/
+│   ├── test_minimax.py   # Tests Minimax algorithm and Alpha-Beta pruning
+│   ├── test_board.py     # Tests board logic and four-in-a-row detection
+│   └── test_game.py      # Tests game mechanics and move validation
+│── timing/
+│   └── test_timing.py   # Measures execution time of Minimax at different depths
 ├── requirements.txt      # List of Python dependencies
 ├── README.md             # This README file
 └── LICENSE               # Project license (GNU)
