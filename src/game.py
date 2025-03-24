@@ -88,6 +88,7 @@ class Game:
         disc = self.get_starting_disc()
         print("Player's disc: ", self.player_disc)
         print("Computer's disc: ", self.computer_disc)
+        print(f"The first column number is 0 and the last is {self.WIDTH-1}")
         print("Player starts!" if disc == self.player_disc else "Computer starts!")
         while running:
             self.board.display()
