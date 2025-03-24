@@ -25,34 +25,34 @@ For more information about convolution, check out the [Wikipedia article](https:
 Before running the project, install **Python 3.x** and **pip**.
 ### Dependencies:
 To install the required dependencies, you can use the `requirements.txt` file.
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ## Installation
 Follow these steps to get the project running on your local machine.
 1. Clone the repository to your local machine:
-```
+```bash
  git clone https://github.com/Climber1705/connect4-minimax.git
 ```
 2. Navigate into the project directory:
-```
+```bash
  cd connect4-minimax
 ```
 3. Install all required Python dependencies:
-```
+```bash
  pip install -r requirements.txt
 ```
 ## How to Run the Code
 To start playing Connect4 with the Minimax algorithm, run the following command:
-```
+```bash
 python src/main.py
 ```
 This command will start the game, and the computer will play against you using the Minimax algorithm.
 
 ## Code Structure
 Here’s a quick overview of the project file structure:
-```
+```graphql
 connect4-minimax/
 │
 ├── src/
@@ -81,9 +81,9 @@ Here are some potential future improvements:
 
 ## Help and Resources
 The following resources were helpful while developing the project:
-- Wikipedia Minimax Algorithm
-- Wikipedia Alpha-Beta Pruning
+- [Wikipedia Minimax Algorithm](https://en.wikipedia.org/wiki/Minimax)
+- [Wikipedia Alpha-Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 - [Stack Overflow - Four-in-a-Row Detection](https://stackoverflow.com/questions/29949169/how-to-implement-the-function-that-checks-for-horizontal-vertical-and-diagonal)
 
 ## License
-This project operates under the GNU General Public License v3.0. The LICENSE(https://choosealicense.com/licenses/gpl-3.0/) file provides details.
+This project operates under the GNU General Public License v3.0. The [LICENSE](https://choosealicense.com/licenses/gpl-3.0/) file provides details.
