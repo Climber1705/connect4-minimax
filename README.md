@@ -72,6 +72,56 @@ connect4-minimax/
 
 - **Kernel Convolution:** To efficiently check for four in a row, the program applies a convolutional kernel over the board, which allows quick detection of four consecutive pieces in any direction (horizontal, vertical, or diagonal).
 
+## Tests
+This project includes unit tests to verify the correctness of the Minimax algorithm, board logic, and game mechanics. The tests include timing measurements to assess the execution time of the Minimax search at various depths.
+
+## Running Unit Tests
+We implement unit tests using `unittest` to cover the following components:
+- **Minimax Algorithm & Alpha-Beta Pruning:** Ensures that the AI selects optimal moves.
+- **Board Logic:** Validates detecting "four in a row" conditions.
+- **Game Mechanics:** Tests move validation and game state updates.
+
+## Running All Unit Tests
+To execute all unit tests, run the following command:
+```bash
+python -m unittest discover -s tests
+```
+
+## Test File Structure
+```graphql
+tests/
+├── test_minimax.py   # Tests Minimax algorithm and Alpha-Beta pruning
+├── test_board.py     # Tests board logic and four-in-a-row detection
+├── test_game.py      # Tests game mechanics and move validation
+```
+
+## Running Timing Tests
+The **timing tests** measure the execution time of the Minimax algorithm at different search depths. This script helps analyse performance and determine practical depth limits.
+## Running the Timing Test
+To execute the timing tests, run the following:
+```bash
+python timing/test_timing.py
+```
+
+## Expected Output
+The script will output the execution time for different depths, for example:
+```bash
+Depth 1: 0.0084 seconds
+Depth 2: 0.0084 seconds
+Depth 3: 0.0328 seconds
+Depth 4: 0.0578 seconds
+Depth 5: 0.3377 seconds
+Depth 6: 0.3351 seconds
+Depth 7: 3.3792 seconds
+Depth 8: 4.7649 seconds
+```
+
+## Timing Test File Structure
+```graphql
+timing/
+├── test_timing.py   # Measures execution time of Minimax at different depths
+```
+
 ## Improvements
 Here are some potential future improvements:
 1. **Transposition Table:** Implement a transposition table to store previously evaluated board states and avoid redundant calculations.
