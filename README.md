@@ -111,14 +111,14 @@ python timing/test_timing.py
 ## Expected Output
 The script will output the execution time for different depths, for example:
 ```bash
-Depth 1: 0.0084 seconds
-Depth 2: 0.0084 seconds
-Depth 3: 0.0328 seconds
-Depth 4: 0.0578 seconds
-Depth 5: 0.3377 seconds
-Depth 6: 0.3351 seconds
-Depth 7: 3.3792 seconds
-Depth 8: 4.7649 seconds
+Depth 1: 0.0078 seconds
+Depth 2: 0.0030 seconds
+Depth 3: 0.0135 seconds
+...
+Depth 9: 12.5179 seconds
+Depth 10: 27.3099 seconds
+Depth 11: 170.8302 seconds
+Depth 12: 431.4475 seconds
 ```
 
 ## Timing Test File Structure
