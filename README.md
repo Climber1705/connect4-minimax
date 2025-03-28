@@ -16,10 +16,10 @@ The program uses a kernel convolution approach to detect when a player has align
 For more information about convolution, check out the [Wikipedia article](https://en.wikipedia.org/wiki/Kernel_(image_processing)).
 
 ## Features
-- Play Connect4 with a computer opponent using the Minimax algorithm.
-- Alpha-Beta pruning for faster decision-making.
-- Efficient kernel convolution for detecting "four in a row".
-- Simple command-line interface.
+- 🎮 Play Connect4 with a computer opponent using the Minimax algorithm.
+- ⚡ Alpha-Beta pruning for faster decision-making.
+- 🧩 Efficient kernel convolution for detecting "four in a row".
+- 🖥️ Simple command-line interface.
 
 ## Requirements
 Before running the project, install **Python 3.x** and **pip**.
