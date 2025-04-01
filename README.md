@@ -1,14 +1,14 @@
 
 # 🎮 **Connect4 with Minimax**
 ## 🔍 **Overview**
-This project implements the **Connect4** game using the **Minimax algorithm** with **Alpha-Beta pruning** to enable an AI opponent to make optimal moves based on a decision tree search. I was inspired by the **Introduction to Artificial Intelligence** module at **King's College London(KCL)**, where I learned about Minimax and Alpha-Beta pruning concepts.
+This project implements the **Connect4** game using the **Minimax algorithm** with **Alpha-Beta pruning** to enable an AI opponent to make optimal moves based on a decision tree search. I found inspiration in the **Introduction to Artificial Intelligence** module at **King's College London (KCL)**, where I explored the concepts of Minimax and Alpha-Beta pruning.
 
 ## 🧠 Minimax Algorithm
-**Minimax** is an adversarial search algorithm used in two-player games like **Connect4** and **Chess**. In these games, one player tries to maximize their score, while the other player aims to minimize it. The **Minimax algorithm** explores all possible moves (to a specific depth) by recursively evaluating the game state, assuming both players play optimally. The algorithm then chooses the move that maximizes the player's chances of winning, while minimizing the opponent's chances.
+**Minimax** is an adversarial search algorithm used in two-player games like **Connect4** and **Chess**. In these games, one player tries to maximise their score, while the other aims to minimise it. The **Minimax algorithm** explores all possible moves (to a specific depth) by recursively evaluating the game state, assuming both players play optimally. The algorithm then chooses the move that maximises the player's chances of winning, while minimising the opponent's chances.
 For more information about **Minimax**, check out the [Wikipedia article](https://en.wikipedia.org/wiki/Minimax).
 
 ## ⚡ **Alpha-Beta Pruning**
-**Alpha-Beta pruning** is an optimisation technique for the **Minimax algorithm**. It reduces the number of branches evaluated in the search tree by eliminating branches that can't possibly influence the final decision. To achieve this, we maintain two values: **Alpha** and **Beta**. 
+**Alpha-Beta pruning** is an optimisation technique for the **Minimax algorithm**. It reduces the number of branches evaluated in the search tree by eliminating branches that can't possibly influence the final decision. We maintain two values: **Alpha** and **Beta** to achieve this. 
 - **Alpha** represents the minimum score the maximising player can guarantee.
 - **Beta** represents the maximum score the minimising player can guarantee.
 
@@ -47,6 +47,7 @@ Follow these steps to get the project running on your local machine.
 ```bash
  pip install -r requirements.txt
 ```
+
 ## 🎲 **How to Run the Code**
 To start playing Connect4 with the **Minimax algorithm**, run the following command:
 ```bash
@@ -77,7 +78,7 @@ connect4-minimax/
 ## 🏗️ **How the Minimax Algorithm Works**
 - **Minimax Algorithm:** This is the core algorithm used for decision-making in two-player games. The algorithm explores all possible moves and recursively evaluates the best option for both players. One player aims to maximise their score, while the other seeks to minimise it.
 
-- **Alpha-Beta Pruning: Alpha-Beta pruning** is an optimisation technique used with **Minimax**. It reduces the number of nodes evaluated in the search tree by "pruning" branches that won't affect the final decision.
+**Alpha-Beta Pruning** is an optimization technique used with **Minimax**. It reduces the number of nodes evaluated in the search tree by "pruning" branches that won't affect the final decision.
 
 - **Kernel Convolution:** To efficiently check for four in a row, the program applies a **convolutional kernel** over the board, which allows quick detection of four consecutive pieces in any direction (**horizontal**, **vertical**, or **diagonal**).
 
